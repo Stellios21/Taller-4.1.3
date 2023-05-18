@@ -1,0 +1,15 @@
+version: 2.1
+jobs:
+  build-and-test:
+    docker:
+      - image: circleci/openjdk:11-jdk
+    working_directory: ~/app
+    steps:
+      - checkout
+      - run: mvn -B clean test
+
+workflows:
+  version: 2
+  build-and-test:
+    jobs:
+      - build-and-test
